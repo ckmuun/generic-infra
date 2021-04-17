@@ -1,0 +1,12 @@
+apiVersion: networking.k8s.io/v1beta1
+
+kind: Ingress
+
+metadata:
+  name: pg-ingress
+
+spec:
+  backend:
+    serviceName: minipg
+    servicePort: 5432
+

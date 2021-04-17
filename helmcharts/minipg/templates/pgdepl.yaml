@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+
+kind: Deployment
+
+metadata:
+  name: minipg
+  labels:
+    app: minipg
+
+spec:
+  replicas: 1
+  template:
+    metadata:
+      name: minipg
+      labels:
+        app: minipg
+
+    spec:
+      containers:
+        - name: postgres
+          image: postgres
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 5432
+          # FIXME using an absolutely non-recommended option here -> add a K8s secret
+          env:
+            - name: POSTGRES_HOST_AUTH_METHOD
+              value: trust
+  selector:
+    matchLabels:
+      app: minipg
+
+

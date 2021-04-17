@@ -1,0 +1,34 @@
+apiVersion: networking.k8s.io/v1beta1
+
+kind: Ingress
+
+metadata:
+  name: pgingress
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+
+spec:
+  rules:
+    - host: mini.pg.ckoller
+      http:
+        paths:
+          - path: /
+            backend:
+              serviceName: minipg
+              servicePort: 5432
+
+
+
+#spec:
+#  rules:
+#    - host: mini.pg.io
+#      http:
+#        - paths:
+#            - path: /
+#              backend:
+#                serviceName: minipg
+#                servicePort: 5432
+#    backend:
+#      serviceName: minipg
+#      servicePort: 5432
+
