@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Pod
+
+metadata:
+  name: qk
+  labels:
+    app: qk
+
+spec:
+  containers:
+    - name: qk
+      image: quay.io/ckmuun/qk-arm64-test
+      imagePullPolicy: IfNotPresent
+
